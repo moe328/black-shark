@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-do list</title>
+  <link rel="stylesheet" href="todo.css">
+  <script src="todo.js" defer></script>
+</head>
+<body>
+  <main class="todo-app">
+    <header>
+      <h1>To-do list</h1>
+    </header>
+
+    <form id="task-form">
+      <label for="task-input">New task</label>
+      <div class="input-row">
+        <input id="task-input" placeholder="Enter a task" maxlength="200" aria-required="true">
+        <select id="task-priority" aria-label="New task priority">
+          <option value="low">Low</option>
+          <option value="medium" selected>Medium</option>
+          <option value="high">High</option>
+        </select>
+        <button type="submit" class="primary">Add</button>
+      </div>
+    </form>
+
+    <form id="search-form" role="search">
+      <label for="search-input">Search tasks</label>
+      <div class="input-row">
+        <input id="search-input" type="search" placeholder="Search tasks">
+        <button type="submit">Search</button>
+      </div>
+    </form>
+
+    <div class="filters" role="group" aria-label="Filter tasks">
+      <button type="button" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" data-filter="completed" aria-pressed="false">Completed</button>
+      <button type="button" data-filter="uncompleted" aria-pressed="false">Uncompleted</button>
+      <button type="button" id="clear-all" class="delete-button">Clear all</button>
+    </div>
+
+    <ul id="task-list" aria-label="Tasks"></ul>
+    <p id="empty-message" class="empty-message">No tasks yet.</p>
+    <footer><span id="task-count">0 tasks left</span></footer>
+    <p id="status" role="status"></p>
+  </main>
+</body>
+</html>
