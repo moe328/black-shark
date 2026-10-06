@@ -1,0 +1,83 @@
+const API_URL = "http://localhost:5000/api/todos";
+
+// GET - Get all todos
+async function getTodos() {
+  const response = await fetch(API_URL);
+  const data = await response.json();
+
+  return data;
+}
+
+
+// POST - Add todo
+async function addTodo(todo) {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(todo)
+  });
+
+  const data = await response.json();
+
+  return data;
+}
+
+
+// PUT - Edit todo
+async function editTodo(id, todo) {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(todo)
+  });
+
+  const data = await response.json();
+
+  return data;
+}
+
+
+// PUT - Complete / Uncomplete todo
+async function toggleComplete(id, completed) {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      completed: completed
+    })
+  });
+
+  const data = await response.json();
+
+  return data;
+}
+
+
+// DELETE - Delete one todo
+async function deleteTodo(id) {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "DELETE"
+  });
+
+  const data = await response.json();
+
+  return data;
+}
+
+
+// DELETE - Delete all todos
+async function deleteAllTodos() {
+  const response = await fetch(API_URL, {
+    method: "DELETE"
+  });
+
+  const data = await response.json();
+
+  return data;
+}
